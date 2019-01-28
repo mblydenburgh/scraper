@@ -12,16 +12,18 @@ module.exports = function(app){
         axios.get("https://www.beeradvocate.com/beer/")
         .then(response => {
             const $ = cheerio.load(response.data);
-            const results = {
-                "results":[]
+            const scrapeData = {
+                "data":[]
             };
             $("div#rating_fullview_container").each(function(i, element){
-                const name = $(this).find("h6").children("a").text();
+                const name = $(element).find("h6").children("a").text();
                 
-                results.names.push(name);
+                scrapeData.data.push({
+                    "beerName":name
+                });
             });
             
-            res.json(results);
+            res.json(scrapeData);
         });
 
     });
