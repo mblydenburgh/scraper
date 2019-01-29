@@ -19,18 +19,36 @@ module.exports = function(app){
                 const name = $(element).find("h6").children("a").text();
                 const brewery = $(element).find("br + a").first().text();
                 const style = $(element).find("br + a").eq(1).text();
-                
+                const score = $(element).find("span.BAscore_norm").text();
+                const comment = $(element).find("div.comment").text();
                 
                 scrapeData.data.push({
-                    "beerName":name,
-                    "brewery":brewery,
-                    "style":style,
+                    "beerName": name,
+                    "brewery": brewery,
+                    "style": style,
+                    "score": score,
+                    "comment": comment,
                 });
+                
+                db.Review.create({
+                    beer_name: name,
+                    beer_style: style,
+                    brewery_name: brewery,
+                    score: score,
+                    review_body: comment
+                });
+                
             });
             
             res.json(scrapeData);
         });
 
+    });
+
+    app.get("/api", async (req,res) => {
+       
+       const data = await db.Review.find();
+       console.log(data);
     });
 
 };

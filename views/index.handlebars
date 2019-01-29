@@ -1,3 +1,16 @@
 <main>
-    <h1>The Beer Advocate Reviewer</h1>
+    <h1>The Beer Scraper</h1>
+    <h3>Scraping The Beer Advocate</h3>
+    
+    <section>
+        {{#each beer}}
+            <div class="item">
+                <h4>{{name}}</h4>
+                <h6>{{brewery}}</h6>
+                <p>{{style}}</p>
+                <p>{{rating}} / 5</p>
+            </div>
+        {{/each}}
+    </section>
+    
 </main>

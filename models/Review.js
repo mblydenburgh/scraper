@@ -6,6 +6,10 @@ const ReviewSchema = new Schema({
         type: String
     },
     
+    beer_style: {
+        type: String
+    },
+    
     brewery_name: {
         type: String
     },
