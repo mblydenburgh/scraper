@@ -17,9 +17,14 @@ module.exports = function(app){
             };
             $("div#rating_fullview_container").each(function(i, element){
                 const name = $(element).find("h6").children("a").text();
+                const brewery = $(element).find("br + a").first().text();
+                const style = $(element).find("br + a").eq(1).text();
+                
                 
                 scrapeData.data.push({
-                    "beerName":name
+                    "beerName":name,
+                    "brewery":brewery,
+                    "style":style,
                 });
             });
             
