@@ -3,8 +3,10 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 module.exports = function(app){
-    app.get("/",(req,res) => {
-       res.render("index");
+    app.get("/", async (req,res) => {
+        const data = await db.Review.find({});
+        console.log(data);
+      res.render("index", {beer:data});
     });
     
     // The scrape route pulls info from Beer Advocate and pushes it into the database

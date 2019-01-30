@@ -1,8 +1,6 @@
 // Define Server dependancies
 const express = require("express");
-const mongodb = require("mongoose");
-const axios = require("axios");
-const cheerio = require("cheerio");
+const mongoose = require("mongoose");
 const logger = require("morgan");
 
 // Initialize server variables and middleware
@@ -21,7 +19,8 @@ app.engine("handlebars", expresshbs({ defaultLayout: 'main' }));
 app.set("view engine","handlebars");
 require('./routes/api-routes')(app);
 
-
+// Connect to MongoDB
+mongoose.connect("mongodb://localhost:27017/beer", {useNewUrlParser: true});
 
 async function startServer(){
     return app.listen(PORT,() => console.log(`Serving fools on port ${PORT}`));
