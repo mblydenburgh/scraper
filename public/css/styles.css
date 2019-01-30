@@ -1,0 +1,19 @@
+nav{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+nav a{
+  margin: 1rem;
+}
+
+.btn{
+  padding: 1.5rem;
+  background-color: paleturquoise;
+}
+
+.btn-red{
+  background-color: red;
+  color: white;
+}

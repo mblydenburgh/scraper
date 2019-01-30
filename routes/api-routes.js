@@ -6,7 +6,7 @@ module.exports = function(app){
     app.get("/", async (req,res) => {
         const data = await db.Review.find({});
         console.log(data);
-      res.render("index", {beer:data});
+        res.render("index", {beer:data});
     });
     
     // The scrape route pulls info from Beer Advocate and pushes it into the database
@@ -42,15 +42,19 @@ module.exports = function(app){
                 
             });
             
-            res.json(scrapeData);
+            res.redirect("/");
         });
 
     });
 
     app.get("/api", async (req,res) => {
-       
        const data = await db.Review.find();
        console.log(data);
     });
 
+
+    app.delete("/", async (req,res) => {
+        await db.Review.deleteMany();
+        res.redirect("/");
+    });
 };

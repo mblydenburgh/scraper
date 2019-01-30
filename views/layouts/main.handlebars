@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-		{{!--<link rel="stylesheet" href="css/styles.css" type="text/css" />--}}
+		<link rel="stylesheet" href="css/styles.css" type="text/css" />
 		<title>Beer Advocate Reviews</title>
 	</head>
 	<body>
+		<nav>
+				<h1>The Beer Scraper</h1>
+				<a href="/" class="btn">Home</a>
+				<a href="/scrape" class="btn">Scrape Beers</a>
+				<a href="#" class="btn">Saved Articles</a>
+				<a id="clear-beers" href="/#" class="btn btn-red">Clear Articles</a>
+		</nav>
 		{{{ body }}}
-		{{!--<script src="js/brgr-bar.js"></script>--}}
+		<script src="js/beer.js"></script>
 	</body>
 </html>

@@ -20,7 +20,8 @@ app.set("view engine","handlebars");
 require('./routes/api-routes')(app);
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/beer", {useNewUrlParser: true});
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/beer"
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
 
 async function startServer(){
     return app.listen(PORT,() => console.log(`Serving fools on port ${PORT}`));
