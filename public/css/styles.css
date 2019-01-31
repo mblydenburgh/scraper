@@ -9,11 +9,16 @@ nav a{
 }
 
 .btn{
-  padding: 1.5rem;
-  background-color: paleturquoise;
+  padding: .75rem 1.5rem;
+  background-color: #61D9E6;
+  border-radius: 20px
 }
 
-.btn-red{
-  background-color: red;
+.btn-clear{
+  background-color: #C92020;
   color: white;
+}
+
+.btn-save{
+  background-color: #88BAEB;
 }

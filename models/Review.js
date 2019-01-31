@@ -22,6 +22,10 @@ const ReviewSchema = new Schema({
         type: String
     },
     
+    saved: {
+        type: Boolean
+    },
+    
     notes:[
         {
             type: Schema.Types.ObjectId,
