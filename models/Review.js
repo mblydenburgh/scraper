@@ -22,9 +22,13 @@ const ReviewSchema = new Schema({
         type: String
     },
     
-    comments: {
-        type: String
-    }
+    notes:[
+        {
+            type: Schema.Types.ObjectId,
+            ref:"Note"
+        }
+    ]
+    
 });
 
 const Review = mongoose.model("Review",ReviewSchema);
