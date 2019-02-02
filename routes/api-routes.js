@@ -49,15 +49,17 @@ module.exports = function(app){
 
     });
 
+    // route to display data
     app.get("/api", async (req,res) => {
        const data = await db.Review.find({});
        console.log(data);
        res.json(data);
     });
 
+    // route for displaying saved beers
     app.get("/saved", async (req,res) => {
         const data = await db.Review.find({saved:true});
-        res.render("index",{beers:data});
+        res.render("index",{beer:data});
     });
 
     // route for changing saved state in database entry
@@ -69,6 +71,7 @@ module.exports = function(app){
         res.end();
     });
 
+    //! route for clearing all scraped data from db - uh oh!
     app.delete("/", async (req,res) => {
         console.log(`in the delete route`);
         await db.Review.deleteMany();
