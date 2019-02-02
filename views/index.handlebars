@@ -1,5 +1,4 @@
 <main>
-    <hr></hr>
     <section id="beers">
         {{#each beer}}
             <div class="item">
@@ -14,8 +13,8 @@
                 {{#if saved}}
                     <button id="{{id}}" class="btn btn-save">Unsave</button>
                 {{/if}}
+                <button data-id="{{id}}" class="btn btn-notes">Notes</button>
             </div>
-            <hr></hr>
         {{/each}}
     </section>
     
