@@ -14,11 +14,18 @@ document.addEventListener("DOMContentLoaded", event => {
   });
   
   // Content dynamically generated, delete click listeners 
-  beersDiv.addEventListener("click", event => {
+  beersDiv.addEventListener("click", async event => {
 
     if(event.target && event.target.matches(".btn-save")){
-      console.log(`clicked ${event.target}`);
+      console.log(`clicked button ${event.target.id}`);
+      const id = event.target.id;
+      await fetch(`/${id}`,{
+        method:"PUT"
+      });
+
+      window.location.assign("/");
     }
+
   });
   
   

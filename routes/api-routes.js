@@ -30,6 +30,7 @@ module.exports = function(app){
                     "style": style,
                     "score": score,
                     "comment": comment,
+                    "saved":false
                 });
                 
                 db.Review.create({
@@ -37,7 +38,8 @@ module.exports = function(app){
                     beer_style: style,
                     brewery_name: brewery,
                     score: score,
-                    review_body: comment
+                    review_body: comment,
+                    saved:false
                 });
                 
             });
@@ -48,15 +50,28 @@ module.exports = function(app){
     });
 
     app.get("/api", async (req,res) => {
-       const data = await db.Review.find();
+       const data = await db.Review.find({});
        console.log(data);
+       res.json(data);
     });
 
+    app.get("/saved", async (req,res) => {
+        const data = await db.Review.find({saved:true});
+        res.render("index",{beers:data});
+    });
+
+    // route for changing saved state in database entry
+    app.put("/:id", async (req,res) => {
+        const id = req.params.id;
+        const {saved: savedState} = await db.Review.findById(id);
+        console.log(`prev state: ${savedState}`);
+        await db.Review.findOneAndUpdate({_id:id},{saved:!savedState});
+        res.end();
+    });
 
     app.delete("/", async (req,res) => {
         console.log(`in the delete route`);
         await db.Review.deleteMany();
-        // res.redirect("/");
         res.end();
     });
 };

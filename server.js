@@ -22,6 +22,7 @@ require('./routes/api-routes')(app);
 // Connect to MongoDB
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/beer"
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
+mongoose.set("useFindAndModify",false);
 
 async function startServer(){
     return app.listen(PORT,() => console.log(`Serving fools on port ${PORT}`));

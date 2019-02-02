@@ -8,7 +8,12 @@
                 <p>Style: {{beer_style}}</p>
                 <p>Score: {{score}} / 5</p>
                 <p>Review:{{review_body}}</p>
-                <button id="{{id}}" class="btn btn-save">Save</button>
+                {{#unless saved}}
+                    <button id="{{id}}" class="btn btn-save">Save</button>
+                {{/unless}}
+                {{#if saved}}
+                    <button id="{{id}}" class="btn btn-save">Unsave</button>
+                {{/if}}
             </div>
             <hr></hr>
         {{/each}}
