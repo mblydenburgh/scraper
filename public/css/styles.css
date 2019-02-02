@@ -23,6 +23,7 @@ nav h1{
 
 nav a{
   margin: 1rem;
+  color: #094074;
 }
 
 main{
@@ -30,7 +31,6 @@ main{
 }
 
 .btn{
-  padding: .75rem 1.5rem;
   background-color: #61D9E6;
   border-radius: 20px;
 }
