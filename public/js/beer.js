@@ -1,26 +1,25 @@
 const clearBeerButton = document.querySelector("#clear-beers");
 const saveBeerButtons = document.querySelectorAll(".btn-save");
+const beersDiv = document.querySelector("#beers");
 
-document.addEventListener("DOMConententLoaded", event => {
-  
-  clearBeerButton.addEventListener("click", event => {
-    fetch("/",{
+document.addEventListener("DOMContentLoaded", event => {
+
+  clearBeerButton.addEventListener("click", async event => {
+    console.log(`clicked`);
+    await fetch("/",{
       method:'DELETE'
     });
-    location.reload();
+
+    window.location.assign("/");
   });
   
-  document.querySelector("#beers").addEventListener("click", event => {
-    console.log(event.target);
+  // Content dynamically generated, delete click listeners 
+  beersDiv.addEventListener("click", event => {
+
     if(event.target && event.target.matches(".btn-save")){
       console.log(`clicked ${event.target}`);
     }
   });
   
-  // saveBeerButtons.forEach(button => {
-  //   button.addEventListener("click", event => {
-  //     console.log(`clicked ${event.target}`);
-  //   });
-  // });
   
 });

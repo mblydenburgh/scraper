@@ -54,7 +54,9 @@ module.exports = function(app){
 
 
     app.delete("/", async (req,res) => {
+        console.log(`in the delete route`);
         await db.Review.deleteMany();
-        res.redirect("/");
+        // res.redirect("/");
+        res.end();
     });
 };
