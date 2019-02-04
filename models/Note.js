@@ -4,7 +4,12 @@ const Schema = mongoose.Schema;
 const NoteSchema = new Schema({
     body: {
         type: String
+    },
+    author:{
+        type:String
     }
 });
 
-module.exports = mongoose.model("Note",NoteSchema);
+const Note = mongoose.model("Note",NoteSchema);
+
+module.exports = Note;

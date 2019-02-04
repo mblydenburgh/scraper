@@ -77,4 +77,17 @@ module.exports = function(app){
         await db.Review.deleteMany();
         res.end();
     });
+
+    // route for posting notes on a particular beer
+    app.post("/notes/:id", async (req,res) => {
+        const id = req.params.id;
+        console.log(`id: ${id}`);
+        const {name,note} = req.body;
+        console.log(name,note);
+        const newNote = await db.Note.create({body:note,author:name});
+        console.log(newNote);
+        await db.Review.findOneAndUpdate({_id:id},{notes:newNote._id},{new:true});
+
+        res.redirect("/");
+    });
 };
