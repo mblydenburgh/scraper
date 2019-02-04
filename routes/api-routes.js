@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 
 module.exports = function(app){
     app.get("/", async (req,res) => {
-        const data = await db.Review.find({});
+        const data = await db.Review.find({}).populate("notes");
         console.log(data);
         res.render("index", {beer:data});
     });

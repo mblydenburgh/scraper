@@ -27,6 +27,13 @@
                         <textarea name="note" id="note-input" cols="30" rows="10"></textarea>
                         <button type="submit">Submit</button>
                     </form>
+                    <div class="notes">
+                        <h3>Notes:</h3>
+                        {{#each notes}}
+                            <p>Author: {{author}}</p>
+                            <p>Note: {{body}}</p>
+                        {{/each}}
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
