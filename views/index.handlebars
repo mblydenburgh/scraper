@@ -19,7 +19,7 @@
             <div id="modal{{id}}" class="modal">
                 <div class="modal-content">
                     <form action="/notes/{{id}}" method="POST">
-                        <h1>Notes</h1>
+                        <h1>Add/View Notes</h1>
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name-input">
 
@@ -28,10 +28,11 @@
                         <button type="submit">Submit</button>
                     </form>
                     <div class="notes">
-                        <h3>Notes:</h3>
+                        <h5>Notes:</h5>
                         {{#each notes}}
                             <p>Author: {{author}}</p>
                             <p>Note: {{body}}</p>
+                            <hr>
                         {{/each}}
                     </div>
                 </div>
